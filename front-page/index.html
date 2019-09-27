@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- nav bar -->
+	<div class="header">
+		<div class="navigation">
+			<div class="main-menu">
+				<div class="logo">
+					<a href="index.html">
+						<img src="logo.png" alt="logo">
+					</a>
+				</div>
+				<div class="menu">
+					<a href="#home">HOME</a>
+					<a href="#portfolio">PORTFOLIO</a>
+					<a href="#pages">PAGES</a>
+					<a href="#">BLOG</a>
+					<a href="#">SHOP</a>
+					<a href="#">CONTACT US</a>
+				</div>					
+			</div>			
+			<div class="nav-btn">
+				<button>
+					<img src="view_headline-24px.svg">
+				</button>
+			</div>
+		</div>
+	</div>
+	<!-- home -->
+	<div id="home" class="content">
+		<img src="home.png" >
+	</div>
+	<div id="portfolio" class="content">
+		<img src="portfolio.png">
+	</div>
+	<div id="pages" class="content">
+		<img src="pages.png">
+	</div>
+	<div id="blogs" class="content">
+		<img src="blogs.png">
+	</div>
+	<div id="shops" class="content">
+		<img src="pages.png">
+	</div>
+	<script>
+		window.onscroll = function() {myFunction()};
+
+		var navbar = document.getElementById("header");
+		var sticky = navbar.offsetTop;
+
+		function myFunction() {
+		  if (window.pageYOffset >= sticky) {
+		    navbar.classList.add("sticky")
+		  } else {
+		    navbar.classList.remove("sticky");
+		  }
+		}
+</script>
+</body>
+</html>

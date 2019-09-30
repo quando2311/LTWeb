@@ -3,58 +3,64 @@
 <head>
 	<title>Home page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<!-- nav bar -->
-	<div class="navbar">
+	<div class="header">
 		<div class="navigation">
 			<div class="main-menu">
 				<div class="logo">
 					<a href="index.html">
-						<img src="img/logo.png" alt="logo">
+						<img src="logo.png" alt="logo">
 					</a>
 				</div>
 				<div class="menu">
 					<a href="#home">HOME</a>
 					<a href="#portfolio">PORTFOLIO</a>
 					<a href="#pages">PAGES</a>
-					<a href="#">BLOG</a>
+					<a href="#blogs">BLOG</a>
 					<a href="#">SHOP</a>
 					<a href="#">CONTACT US</a>
 				</div>					
 			</div>			
 			<div class="nav-btn">
-				<button class="btn-dropdown" onclick="showDropdown()">
-					<img src="icon/view_headline-24px.svg" id="drop">
+				<button>
+					<img src="view_headline-24px.svg">
 				</button>
-				<div class="menu-dropdown" id="dropdown">
-					<a href="#home">HOME</a>
-					<a href="#portfolio">PORTFOLIO</a>
-					<a href="#pages">PAGES</a>
-					<a href="#">BLOG</a>
-					<a href="#">SHOP</a>
-					<a href="#">CONTACT US</a>
-				</div>		
 			</div>
 		</div>
 	</div>
-
+	<!-- home -->
+	<div id="home" class="content">
+		<img src="home.png" >
+	</div>
+	<div id="portfolio" class="content">
+		<img src="portfolio.png">
+	</div>
+	<div id="pages" class="content">
+		<img src="pages.png">
+	</div>
+	<div id="blogs" class="content">
+		<img src="ip11_pro.png" style="width:22%;height:280px;">
+		<img src="SSA50.jpg" style="width:22%;height:280px;">
+		<img src="SSS10+.jpg" style="width:22%;height:280px;">
+	</div>
+	<div id="shops" class="content">
+		<img src="pages.png">
+	</div>
 	<script>
-	/* When the user clicks on the button, 
-	toggle between hiding and showing the dropdown content */
-	var menu_dropdown = document.getElementById("dropdown");
-	function showDropdown() {	  
-	  menu_dropdown.classList.toggle("show");
-	}
+		window.onscroll = function() {myFunction()};
 
-	window.onclick = function(event){
-		if(!event.target.matches('#drop')) {
-			if(menu_dropdown.classList.contains('show')){
-				menu_dropdown.classList.remove('show');
-			}
+		var navbar = document.getElementById("header");
+		var sticky = navbar.offsetTop;
+
+		function myFunction() {
+		  if (window.pageYOffset >= sticky) {
+		    navbar.classList.add("sticky")
+		  } else {
+		    navbar.classList.remove("sticky");
+		  }
 		}
-	}
-	</script>
+</script>
 </body>
 </html>

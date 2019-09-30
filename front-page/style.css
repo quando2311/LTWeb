@@ -24,11 +24,13 @@ a{
 	text-decoration: none;
 	color: inherit;
 }
+/* css for navbar */
 
 .navbar{
 	position: fixed;
 	width: 100%;
 	top: 0;
+	z-index: 10;
 }
 
 .nav-btn{
@@ -73,7 +75,8 @@ a{
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	background-color: white;
+	max-height: 100px;
+	background-color: #f3f3f3;
 }
 
 .main-menu{
@@ -99,7 +102,81 @@ a{
 	float: left;
 }
 
+/* end css for navbar */
+/* ---------------------------------- */
 
+/* css for header */
+
+.slideshow-container{
+	width: 100%;
+	margin-top: 105px;
+	position: relative;
+}
+
+.slide{
+	/* display: none; */
+	background-image: url("img/img-1.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+
+}
+
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: 3%;
+	height: 7%;
+	margin-top: -22px;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	background-color: black;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+#header-content{
+	position: absolute;
+	width: 35%;
+
+}
+
+#header-title{
+	font-size: 10vh;
+}
+
+#header-inside{
+	font-size: 3vh;
+	font-weight: lighter;
+	font-family: 'Roboto-Thin', sans-serif;
+}
+
+/* end css for header */
+
+
+/* responsive handling */
+/* navbar */
 @media only screen and (max-width: 600px) {
 	.menu{
 		display: none;
@@ -108,4 +185,24 @@ a{
 		display: block;
 	}
 
+}
+
+@media only screen and (max-width: 900px) {
+	
+	.slideshow-container{
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+	}
+	
+	#header-content{
+		position: static;
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+	
+
+	.prev, .next {
+		top:75%;
+	}
 }

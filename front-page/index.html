@@ -17,23 +17,21 @@
 				</div>
 				<div class="menu">
 					<a href="#home">HOME</a>
-					<a href="#portfolio">PORTFOLIO</a>
-					<a href="#pages">PAGES</a>
-					<a href="#">BLOG</a>
-					<a href="#">SHOP</a>
+					<a href="#about">ABOUT</a>
+					<a href="#portfolio">FEATURES</a>
+					<a href="#pages">SHOP</a>
 					<a href="#">CONTACT US</a>
 				</div>					
 			</div>			
-			<div class="nav-btn">
+			<div class="nav-btn" id="home">
 				<button class="btn-dropdown" onclick="showDropdown()">
 					<img src="icon/view_headline-24px.svg" id="drop">
 				</button>
 				<div class="menu-dropdown" id="dropdown">
 					<a href="#home">HOME</a>
-					<a href="#portfolio">PORTFOLIO</a>
-					<a href="#pages">PAGES</a>
-					<a href="#">BLOG</a>
-					<a href="#">SHOP</a>
+					<a href="#ABOUT">ABOUT</a>
+					<a href="#portfolio">FEATURES</a>
+					<a href="#pages">SHOP</a>
 					<a href="#">CONTACT US</a>
 				</div>		
 			</div>
@@ -41,81 +39,50 @@
 	</div>
 
 	<!-- header -->
-	<div class="slideshow-container">
+	<div class="slideshow-container" id="home">
 		<div id="header-content">
 			<h1 id="header-title"></h1>
 			<p id="header-inside"></p>
 		</div>
 		<div class="slide fade">
-			<img src="img/img-1.jpg" style="visibility: hidden; height: auto; width: 100%; z-index: 1;" />
+			<img src="img/img-2.jpg" style="visibility: hidden; height: auto; width: 100%; z-index: 1;" />
 		</div>
 		<div class="slide fade">
-			<img src="img/img-2.jpg" style="visibility: hidden; height: auto; width: 100%; z-index: 1;" />			
+			<img src="img/img-1.jpg" style="visibility: hidden; height: auto; width: 100%; z-index: 1;" />			
 		</div>
 		
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 		<a class="next" onclick="plusSlides(1)">&#10095;</a>
 	</div>
 
+	<!-- about zone -->
 
+	<div id="about" class="about">
+		<div class="about-info">
+			<div class="about-item">
+				<img src="icon/24px.svg" style="width: 50px;">
+				<p>Clients</p>
+				<p>567</p>
+			</div>
+			<div class="about-item">
+					<img src="icon/smartphone-24px.svg" style="width: 50px;">
+					<p>Phone</p>
+					<p>65</p>
+				</div>
+			<div class="about-item">
+					<img src="icon/done-24px.svg" style="width: 50px">
+					<p>Sold</p>
+					<p>500</p>
+			</div>
+		</div>
+		<img src="img/about.jpg" style="visibility: none;">		
+	</div>
+
+	
+
+	<div style="height: 500px;">
+
+	</div>
 	<script src="scripts.js"></script>
-	<script>
-		var slideIndex = 1;
-		showSlides(slideIndex);
-
-		// Next/previous controls
-		function plusSlides(n) {
-			showSlides(slideIndex += n);
-		}
-
-
-		function showSlides(n) {
-			var i;
-			var slides = document.getElementsByClassName("slide");			
-			if (n > slides.length) {slideIndex = 1}
-			if (n < 1) {slideIndex = slides.length}
-			for (i = 0; i < slides.length; i++) {
-				slides[i].style.display = "none";
-			}
-			let slideStyle = slides[slideIndex-1].style;
-			let headerContent = document.getElementById("header-content");
-			let headerTitle = document.getElementById("header-title");
-			let headerInside = document.getElementById("header-inside");
-			let slideContainer = document.getElementsByClassName("slideshow-container")[0];
-			slideStyle.display = "block";
-			slideStyle.backgroundImage = "url(img/img-" + slideIndex + ".jpg)";
-			if(slideIndex-1 == 0){
-				headerTitle.innerHTML = "POWER OF 10";	
-				headerInside.innerHTML = "Express yourself way with Galaxy Note10 and Galaxy S10. Shoot like a pro. Edit on the go. Go all-day. That's the power of 10.";
-				
-				headerTitle.style.color = "black";
-				headerInside.style.color = "black";
-				
-				headerContent.style.top = "15%";
-				headerContent.style.left = "50%";
-				headerContent.style.backgroundColor = "white";
-				slideContainer.style.backgroundColor = "white";
-			}
-			else if(slideIndex-1 == 1){
-				headerTitle.innerHTML = "GALAXY FOLD";
-				headerInside.innerHTML = "A breakthrough display. A revolutionary dual battery. The Galaxy Fold has officially arrived.";
-				
-				headerTitle.style.color = "white";
-				headerInside.style.color = "white";
-				
-				headerContent.style.top = "15%";
-				headerContent.style.left = "5%";
-				headerContent.style.backgroundColor = "black";
-				slideContainer.style.backgroundColor = "black";
-			}
-		}
-
-		let minWidth = window.matchMedia("(max-width: 900px)");
-		minWidth.addEventListener("change", function(event) {
-			if(event.matches){
-				console.log("ok");
-			}
-		})
-	</script>
 </body>
 </html>

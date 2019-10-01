@@ -271,11 +271,73 @@ a{
 
 .footer{
 	background-color: #363636;
-	height: 200px;
+	height: auto;
 	display: flex;
 	flex-direction: row;
-	
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 30px;
+	border: 1px solid red;
+	color: white;
 }
+
+.footer-item2{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 200px;
+	font-family: 'Roboto-Thin', sans-serif;
+}
+
+.footer-item2 a{
+	padding: 10px;
+	text-align: center;
+}
+
+.footer-item1{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding: 0px;
+}
+
+.sub-item1, .sub-item2{
+	margin-top: 0px;
+	margin-left: 40px;
+	margin-right: 40px;
+	height: 100%;
+}
+
+.sub-item1 ul{
+	display: inline-block;
+	list-style-type: none;
+	list-style-position: inside;
+	padding-left: 0px;
+	text-align: left;
+	margin-top: 0px;
+}
+
+.sub-item1 a, .sub-item2 a{
+	display: inline;
+	font-family: 'Roboto-Thin', sans-serif;
+	padding: 5px;
+	width: 100px;
+	animation: 0.3s;
+}
+
+.sub-item2 ul{
+	display: inline-block;
+	list-style-type: circle;
+	list-style-position: inside;
+	padding-left: 0px;
+	text-align: left;
+	margin-top: 0px;
+}
+
+.sub-item1 a:hover, .sub-item2 a:hover{
+	color: #C0C0C0;
+}
+
 
 /* end css for footer */
 
@@ -334,7 +396,7 @@ a{
 }
 .input-logo {
 	width: 100%;
-	height: 300px;
+	height: auto;
 }
 .newsletter-sign-up {
 	float: left;
@@ -378,9 +440,10 @@ a{
     width: 100%;
     height: auto;
     background-color: white;
-    text-align: center;
+	text-align: center;
+	vertical-align: middle;
 }
 .logo-angel img{
     width: 210px;
-    height: 113px;
+    height: auto;
 }

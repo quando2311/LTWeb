@@ -9,6 +9,10 @@
     font-style: normal;	
 }
 
+.normal-txt{
+	font-family: 'Roboto-Thin', sans-seriff;
+}
+
 html{
 	font-family: 'Roboto', sans-seriff;
 	padding: 0px;
@@ -24,6 +28,7 @@ body{
 a{
 	text-decoration: none;
 	color: inherit;
+	cursor: pointer;
 }
 /* css for navbar */
 
@@ -185,7 +190,7 @@ a{
 	background-size: contain;
 	background-repeat: inherit;
 	text-align: center;
-	vertical-align: middle
+	vertical-align: middle;
 }
 
 .about-info{
@@ -216,11 +221,69 @@ a{
 }
 /* end css for about zone */
 
-/* ---------------------------------- */
+/* ---------------------------------------------------------------------- */
+
+/* feature zone css  */
+
+.feature{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 100%;
+	height: 400px;
+}
+
+.feature-item{
+	height: 270px;
+	width: 192px;
+	background-color: #202020;
+	margin: 20px;
+	text-align: center;
+	border-radius: 5%;
+}
+
+.feature-img{
+	max-width: 100%;
+	height: auto;
+}
+.feature-overview{
+	padding-top: 10px;
+	vertical-align: middle;
+}
+
+.feature-overview a {
+	color: white;
+	text-decoration: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	display: block;
+}
+  
+
+/* end css for feature zone */
+
+/* --------------------------------------------------------------------- */
+
+
+/* css for footer */
+
+.footer{
+	background-color: #363636;
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	
+}
+
+/* end css for footer */
+
+/* --------------------------------------------------------------------- */
 
 /* responsive handling */
 /* navbar */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px){ 
 	.menu{
 		display: none;
 	}

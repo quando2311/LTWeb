@@ -43,21 +43,6 @@ function showSlides(n) {
     slideStyle.display = "block";
     slideStyle.backgroundImage = "url(img/img-" + slideIndex + ".jpg)";
     if(slideIndex-1 == 0){
-        headerTitle.innerHTML = "POWER OF 10";	
-        headerInside.innerHTML = "Express yourself way with Galaxy Note10 and Galaxy S10. Shoot like a pro. Edit on the go. Go all-day. That's the power of 10.";
-        
-        headerTitle.style.color = "black";
-        headerInside.style.color = "black";
-        
-        headerContent.style.top = "5%";
-        headerContent.style.left = "50%";
-        headerContent.style.backgroundColor = "white";
-        slideContainer.style.backgroundColor = "white";
-
-        nextBtn.style.color = "black";
-        prevBtn.style.color = "black";
-    }
-    else if(slideIndex-1 == 1){
         headerTitle.innerHTML = "GALAXY FOLD";
         headerInside.innerHTML = "A breakthrough display. A revolutionary dual battery. The Galaxy Fold has officially arrived.";
         
@@ -71,6 +56,23 @@ function showSlides(n) {
 
         nextBtn.style.color = "white";
         prevBtn.style.color = "white";
+
+    }
+    else if(slideIndex-1 == 1){
+        headerTitle.innerHTML = "POWER OF 10";	
+        headerInside.innerHTML = "Express yourself way with Galaxy Note10 and Galaxy S10. Shoot like a pro. Edit on the go. Go all-day. That's the power of 10.";
+        
+        headerTitle.style.color = "black";
+        headerInside.style.color = "black";
+        
+        headerContent.style.top = "5%";
+        headerContent.style.left = "50%";
+        headerContent.style.backgroundColor = "white";
+        slideContainer.style.backgroundColor = "white";
+
+        nextBtn.style.color = "black";
+        prevBtn.style.color = "black";
+
     }
 }
 

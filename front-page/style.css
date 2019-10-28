@@ -277,7 +277,7 @@ a{
 	justify-content: space-around;
 	flex-wrap: wrap;
 	padding: 30px;
-	border: 1px solid red;
+
 	color: white;
 }
 
@@ -343,6 +343,70 @@ a{
 
 /* --------------------------------------------------------------------- */
 
+/* newsletter */
+.newsletter{
+	background-color: #e8e4e4;
+	padding: 100px;
+	font-size: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.input-logo {
+	width: 100%;
+	height: auto;
+}
+.newsletter-sign-up {
+	width: 400px;
+
+}
+.subscribe {
+	width: 200px;
+	border-radius: 25px;
+	border: 2px solid ;
+	font-family: 'Roboto-Thin', sans-serif;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 1px;
+	font-size: 20px;
+	margin-left: 40px;
+}
+.input-subscribe{
+	display: block;
+	width: 200px;
+	border: #e8e4e4;
+	border-bottom: 1px solid #7b7474;
+	height: 29px;
+	background-color: #e8e4e4;
+
+}
+.subscribe:hover{
+	background-color: #555555;
+	color: white;
+}
+.input-subscribe :-moz-placeholder{
+	font-family: 'Roboto-Thin', sans-serif;
+}
+.sign-up-text{
+	font-family: 'Roboto-Thin', sans-serif;
+}
+/*logo-angle*/
+.logo-angel{
+    width: 100%;
+    height: auto;
+    background-color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+.logo-angel img{
+    width: 210px;
+    height: auto;
+}
+
+
+
+
 /* responsive handling */
 /* navbar */
 @media only screen and (max-width: 600px){ 
@@ -386,64 +450,15 @@ a{
 	.prev, .next {
 		top:75%;
 	}
+
+	.newsletter{
+		
+		flex-direction: column;
+	}
+
+	.input-subscribe{
+		padding: 30px;
+		border: none !important;
+	}
 }
 
-/* newsletter */
-.newsletter{
-	background-color: #e8e4e4;
-	padding: 100px;
-	font-size: 24px;
-}
-.input-logo {
-	width: 100%;
-	height: auto;
-}
-.newsletter-sign-up {
-	float: left;
-	width: 40%;
-
-}
-.subscribe {
-	float: left;
-	width: 15%;
-	border-radius: 25px;
-	border: 2px solid ;
-	font-family: 'Roboto-Thin', sans-serif;
-	background-color: black;
-	color: white;
-	text-align: center;
-	padding: 1px;
-	font-size: 20px;
-	margin-left: 40px;
-}
-.input-subscribe{
-	float: left;
-	width: 30%;
-	border: #e8e4e4;
-	border-bottom: 1px solid #7b7474;
-	height: 29px;
-	background-color: #e8e4e4;
-
-}
-.subscribe:hover{
-	background-color: #555555;
-	color: white;
-}
-.input-subscribe :-moz-placeholder{
-	font-family: 'Roboto-Thin', sans-serif;
-}
-.sign-up-text{
-	font-family: 'Roboto-Thin', sans-serif;
-}
-/*logo-angle*/
-.logo-angel{
-    width: 100%;
-    height: auto;
-    background-color: white;
-	text-align: center;
-	vertical-align: middle;
-}
-.logo-angel img{
-    width: 210px;
-    height: auto;
-}

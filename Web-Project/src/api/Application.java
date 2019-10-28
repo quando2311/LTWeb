@@ -7,6 +7,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 @ApplicationPath("/")
 public class Application extends ResourceConfig{
 	public Application() {
-		packages("api");
+		//packages("api");
 	}
 }

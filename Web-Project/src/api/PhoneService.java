@@ -38,8 +38,6 @@ public class PhoneService {
 			json += phone + ",";
 		}
 		json = json.substring(0, json.length()-1) + "]}";
-		return json;
-		
-
+		return json;		
 	}
 }

@@ -7,7 +7,7 @@ public class Phone {
 			String rAM, String camera, String battery) {
 		this.name = name;
 		this.price = price;
-		this.imgURL = imgURL;
+		this.imgURL = imgURL.replace(' ', '-');
 		this.brand = brand;
 		this.screen = screen;
 		OS = oS;
@@ -43,8 +43,15 @@ public class Phone {
 				+ "\"camera\": \"%s\", "
 				+ "\"battery\": \"%s\" "
 				+ "}";
-		return String.format(s, name, price, imgURL, brand, screen, OS, CPU, RAM, camera, battery);
+		return String.format(s, name, price, "localhost:8080/ImageStorage/"+imgURL, brand, screen, OS, CPU, RAM, camera, battery);
 	}
 	
 	
 }
+
+//fetch('http://localhost:8080/Web-Project-API/api/phones', { mode: 'no-cors'})
+//.then((response) => response.json())
+//.then((data) => {
+//	console.log(data);
+//	})
+

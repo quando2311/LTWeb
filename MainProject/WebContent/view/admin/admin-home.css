@@ -1,4 +1,48 @@
+body{
+	margin-top: 0;
+	margin-left:0;
+	margin-right: 0;
+	padding-top: 0;
+	font-family: "Arial", sans-serif;
+}
 
-.admin-navbar{
-	border: 1px solid black;
+.table-content{
+	height: 200px;
+	width: 400px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.table-content table{
+	width: 100%;
+	height: 100%;
+}
+
+th{
+	width: 100%;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom: 1px solid #474a4d;
+	background-color: #3376bd;
+	text-align: center;
+}
+
+tr{
+	padding:0;
+	margin: 0;
+}
+
+td{
+	margin: 0;
+	padding-left: 10px;
+	background-color: #fafafa;
+}
+
+td a{
+	text-decoration: none;
+	color: black;
+}
+
+td:hover{
+	background-color: #f0f0f0;
 }

@@ -15,41 +15,15 @@ import utils.EncryptUtils;
 
 public class Test {
 	public static void main(String[] args) throws Exception{
-		EncryptUtils encrypt = new EncryptUtils();
-		String s = encrypt.encryptSHA256("admin");
-		System.out.println(s);
-		System.out.println(s.length());
-		AdminDAO dao = AdminDAO.getInstance();
-		System.out.println(dao.checkLogin("admin", "admin"));
-//		URL url = new URL("http://localhost:8080/Web-Project-API/api/user?username=admin&password=123");
-//		HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//		con.setRequestMethod("POST");
-//		con.setRequestProperty("userId", "abc123");
-//		con.setRequestProperty("username", "admin");
-//		con.setRequestProperty("password", "123");
-//		con.setRequestProperty("Content-Type", "text/plain");
-//		
-//		con.setDoOutput(true);
-//		OutputStream out = con.getOutputStream();
-//		out.flush();
-//		out.close();
-//		
-//		int codeResponse = con.getResponseCode();
-//		System.out.println(codeResponse);
-//		System.out.println(con.getResponseMessage());
-////		if(codeResponse == HttpURLConnection.HTTP_CREATED) {
-//			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//			String input;
-//			StringBuffer response = new StringBuffer();
-//			while((input = reader.readLine()) != null) {
-//				response.append(input);
-//			}
-//			reader.close();
-//			System.out.println(response);
-//		}
-//		else {
-//			System.out.println("Error Post");
-//		}
-//		
+//		EncryptUtils encrypt = new EncryptUtils();
+//		String s = encrypt.encryptSHA256("admin");
+//		System.out.println(s);
+//		System.out.println(s.length());
+//		AdminDAO dao = AdminDAO.getInstance();
+//		System.out.println(dao.checkLogin("admin", "admin"));
+
+		PhoneDAO dao = PhoneDAO.getInstance();
+		ArrayList<Phone> list = dao.findPhoneByName("SamSung");
+		System.out.println(list.toString());
 	}
 }

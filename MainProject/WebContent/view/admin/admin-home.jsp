@@ -5,28 +5,36 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Home</title>
-<link rel="stylesheet" type="text/css" href="admin-home.css">
+<style>
+	<%@include file="/view/admin/admin-home-navbar.css"%>
+	<%@include file="/view/admin/admin-home.css"%>
+</style>
+
+<!--  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/admin/admin-home.css">-->
 </head>
 <body>
 	<%
 		if(request.getSession().getAttribute("username") == null){
 	%>
-		<div class="admin-navbar">	
-			<form action="admin-home" method="POST">
-				<input type="submit" value="Log Out" name="navigation">
-				<input type="submit" value="Change Password" name="navigation">
-			</form>
-		</div>
+		<jsp:include page="unauthorize.html"/>
 
 	<%	
 		}
 		else{
 	%>
-		<div class="admin-navbar">	
-			<form action="admin-home" method="POST">
-				<input type="submit" value="Log Out" name="navigation">
-				<input type="submit" value="Change Password" name="navigation">
-			</form>
+		<jsp:include page="admin-home-navbar.html" />
+		<div class="table-content">
+			<table>
+				<tr>
+					<th>Contents</th>
+				</tr>
+				<tr>
+					<td><a href="#">Order</a></td>
+				</tr>
+				<tr>
+					<td><a href="admin-phone-list">Phones</a></td>
+				</tr>
+			</table>
 		</div>
 
 	<%

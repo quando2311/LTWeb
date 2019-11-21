@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -42,12 +44,25 @@ public class AdminHomeServlet extends HttpServlet {
 		}
 		else {
 			String post_value = request.getParameter("navigation");
-			if(post_value.equals("Log Out")) {
-				request.getSession().setAttribute("username", null);
-				request.getSession().invalidate();
-				request.setAttribute("message", "");
-				response.sendRedirect("admin");
-			}	
+			switch(post_value) {
+				case "Log Out":
+					Set<String> listUser = (Set<String>) getServletContext().getAttribute("list_user");
+					listUser.remove(request.getSession().getAttribute("username"));
+					request.getSession().setAttribute("username", null);				
+					request.getSession().invalidate();
+					request.setAttribute("message", "");
+					response.sendRedirect("admin");
+					break;					
+				case "Home":
+					response.sendRedirect("admin-home");
+					break;
+					
+				case "Change Pasword":
+					
+					break;
+				default: 
+					break;
+			}
 		}
 				
 	}

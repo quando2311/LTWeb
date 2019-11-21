@@ -11,7 +11,11 @@
   	<servlet-name>AdminHome</servlet-name>
   	<servlet-class>servlet.AdminHomeServlet</servlet-class>
   </servlet>
-  
+
+  <servlet>
+  	<servlet-name>AdminPhoneList</servlet-name>
+  	<servlet-class>servlet.AdminPhoneListServlet</servlet-class>
+  </servlet>  
   
   <servlet-mapping>
   	<servlet-name>AdminLogin</servlet-name>
@@ -21,6 +25,11 @@
   	<servlet-name>AdminHome</servlet-name>
   	<url-pattern>/admin-home</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminPhoneList</servlet-name>
+  	<url-pattern>/admin-phone-list</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

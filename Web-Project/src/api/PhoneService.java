@@ -3,6 +3,7 @@ package api;
 import java.util.ArrayList;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -28,8 +29,16 @@ public class PhoneService {
 	public String getListPhonePage(@QueryParam("page") int pageId) {		
 		PhoneDAO dao = PhoneDAO.getInstance();
 		ArrayList<Phone> listPhone = dao.getListPhonePage(pageId);
-		
 		return getPhoneJsonFromArr(listPhone);
+	}
+	
+	@POST
+	@Path("/phone")
+	@Produces("application/json")
+	public String findPhoneByName(@QueryParam("phone-name") String key) {
+		PhoneDAO dao = PhoneDAO.getInstance();
+		ArrayList<Phone> list = dao.findPhoneByName(key);
+		return getPhoneJsonFromArr(list);
 	}
 	
 	private String getPhoneJsonFromArr(ArrayList<Phone> arr) {

@@ -1,6 +1,7 @@
 package model;
 
 public class Phone {
+	private int productId;
 	private String name, price, imgURL, brand, screen, OS, CPU, RAM, camera, battery;
 
 	public Phone(String name, String price, String imgURL, String brand, String screen, String oS, String cPU,
@@ -30,9 +31,19 @@ public class Phone {
 		this.battery = arr[9];		
 	}
 
+		
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
 	@Override
 	public String toString() {
-		String s = "{ \"name\": \"%s\", "
+		String s = "{ \"productId\": \"%s\", " 
+				+ "\"name\": \"%s\", "
 				+ "\"price\": \"%s\", "
 				+ "\"imgURL\": \"%s\", "
 				+ "\"brand\": \"%s\", "
@@ -43,7 +54,7 @@ public class Phone {
 				+ "\"camera\": \"%s\", "
 				+ "\"battery\": \"%s\" "
 				+ "}";
-		return String.format(s, name, price, "localhost:8080/ImageStorage/"+imgURL, brand, screen, OS, CPU, RAM, camera, battery);
+		return String.format(s, productId, name, price, "localhost:8080/ImageStorage/"+imgURL, brand, screen, OS, CPU, RAM, camera, battery);
 	}
 	
 	

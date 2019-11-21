@@ -80,6 +80,7 @@ public class PhoneDAO {
 				String camera = res.getString(9);
 				String battery = res.getString(10);
 				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);
+				phone.setProductId(res.getInt(1));
 				list.add(phone);
 			}
 		} catch (SQLException e) {
@@ -91,7 +92,7 @@ public class PhoneDAO {
 	
 	public ArrayList<Phone> getListPhonePage(int pageId){
 		ArrayList<Phone> list = new ArrayList<Phone>();
-		int start = 8*(pageId-1) + 27, end = 8*pageId + 27;
+		int start = 8*(pageId-1), end = 8*pageId;
 		String sql = "SELECT * FROM PhoneTbl WHERE phone_id > ? AND phone_id <= ?;";
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -112,6 +113,7 @@ public class PhoneDAO {
 				String camera = res.getString(9);
 				String battery = res.getString(10);
 				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);				
+				phone.setProductId(res.getInt(1));
 				list.add(phone);
 			}
 		} catch (SQLException e) {
@@ -136,6 +138,35 @@ public class PhoneDAO {
 			e.printStackTrace();
 		}
 		return (total%8==0) ? total: total+1;
+	}
+	
+	public ArrayList<Phone> findPhoneByName(String key){
+		ArrayList<Phone> list = new ArrayList<Phone>();
+		String sql = "SELECT * FROM PhoneTbl WHERE phone_name LIKE ?";		
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, "%"+key+"%");
+			ResultSet res = statement.executeQuery();
+			while(res.next()) {
+				String name = res.getString(2);
+				String price = res.getString(3);
+				String imageURL = res.getString(4);
+				String brand = res.getString(5);
+				String screen = res.getString(5);
+				String os = res.getString(6);
+				String cpu = res.getString(7);
+				String ram = res.getString(8);
+				String camera = res.getString(9);
+				String battery = res.getString(10);
+				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);
+				phone.setProductId(res.getInt(1));
+				list.add(phone);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+		return list;
 	}
 	
 }

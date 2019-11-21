@@ -1,0 +1,23 @@
+.admin-navbar{
+	margin-top:0;
+	display: flex;
+	height: 50px;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	font-size: 18px;
+	background-color: #508ef2;
+	padding-right: 20px;
+}
+
+.admin-navbar input[type=submit]{
+	font-family: "Arial", sans-serif;
+	font-size: 18px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.admin-navbar input[type=submit]:hover{
+	color: #3e454f;
+}

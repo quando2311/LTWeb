@@ -29,10 +29,10 @@
 		<jsp:include page="admin-home-navbar.html" />
 		<div class="navigation-form">
 			<form action="admin-phone-list" method="GET">			
-				<input type="text" name="input-phone-name">
-				<input type="submit" name="submit" value="Search">				
+				<input type="text" name="input-phone-name" class="input-key">
+				<input type="submit" name="submit" value="Search" class="btn">				
 			</form>		
-			<input type="button" onclick="location.href='https://google.com';" value = "Add phone" class="add-phone">
+			<input type="button" onclick="location.href='/MainWebProject/add-phone';" value = "Add phone" class="add-phone btn">
 		</div>
 		
 		<div class="table-content">
@@ -53,9 +53,9 @@
 				<%	} %>
 			</table>
 			<div class="page-navigation">
-				<a href="admin-phone-list?<%= p1 %>">Previous</a>
-				<a href="admin-phone-list?<%= p2 %>"> ${ pageId }</a>
-				<a href="admin-phone-list?<%= p3 %>">Next</a>
+				<a href="admin-phone-list?<%= p1 %>" class="btn-nav">Prev</a>
+				<a href="admin-phone-list?<%= p2 %>" class="btn"> ${ pageId }</a>
+				<a href="admin-phone-list?<%= p3 %>" class="btn-nav" style="width: 100px;">Next</a>
 			</div>		
 		</div>
 	<%

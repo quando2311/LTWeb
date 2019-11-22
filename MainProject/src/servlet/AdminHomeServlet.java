@@ -37,13 +37,13 @@ public class AdminHomeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("post to home");
 
 		if(request.getParameter("submit") != null) {
 			doGet(request, response);
 		}
 		else {
 			String post_value = request.getParameter("navigation");
+			System.out.println("post to home" + post_value);
 			switch(post_value) {
 				case "Log Out":
 					Set<String> listUser = (Set<String>) getServletContext().getAttribute("list_user");
@@ -57,8 +57,8 @@ public class AdminHomeServlet extends HttpServlet {
 					response.sendRedirect("admin-home");
 					break;
 					
-				case "Change Pasword":
-					
+				case "Change Password":
+					response.sendRedirect("change-password");
 					break;
 				default: 
 					break;

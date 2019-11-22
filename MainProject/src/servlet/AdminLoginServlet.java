@@ -62,8 +62,6 @@ public class AdminLoginServlet extends HttpServlet {
 				listUser.add(username);
 				getServletContext().setAttribute("list_user", listUser);
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin-home");
-//				request.getRequestDispatcher("admin-home").forward(request, response);	
 				response.sendRedirect("admin-home");
 			}
 			else {

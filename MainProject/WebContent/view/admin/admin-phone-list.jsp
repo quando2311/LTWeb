@@ -32,7 +32,7 @@
 				<input type="text" name="input-phone-name" class="input-key">
 				<input type="submit" name="submit" value="Search" class="btn">				
 			</form>		
-			<input type="button" onclick="location.href='/MainWebProject/add-phone';" value = "Add phone" class="add-phone">
+			<input type="button" onclick="location.href='/MainWebProject/add-phone';" value = "Add phone" class="add-phone btn">
 		</div>
 		
 		<div class="table-content">

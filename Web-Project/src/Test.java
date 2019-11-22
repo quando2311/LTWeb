@@ -23,7 +23,7 @@ public class Test {
 //		System.out.println(dao.checkLogin("admin", "admin"));
 
 		PhoneDAO dao = PhoneDAO.getInstance();
-		ArrayList<Phone> list = dao.findPhoneByName("SamSung");
+		ArrayList<Phone> list = dao.getListPhoneAll();
 		System.out.println(list.toString());
 	}
 }

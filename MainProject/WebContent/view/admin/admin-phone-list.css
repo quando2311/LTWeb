@@ -20,7 +20,6 @@ body{
 }
 
 .table-content{	
-	border: 1px solid black;
 	width: 500px;
 	margin: auto;	
 	margin-top: 30px;
@@ -30,7 +29,6 @@ body{
 }
 
 .table-content table{
-	border: 1px solid black;
 	width: 100%;
 	padding: none;
 }
@@ -77,5 +75,39 @@ th{
 }
 
 .page-navigation{
-	
+	margin-top: 30px;
+}
+
+.page-navigation a{
+	font-size: 13px;
+	color: black;
+	text-decoration: none;
+}
+
+.btn-nav{
+	width: 150px;
+	padding: 10px;
+	background-color: #508ef2;
+	border: none;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn{
+	width: 100px;
+	padding: 10px;
+	background-color: #508ef2;
+	border: none;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn:hover, .btn-nav:hover{
+	background-color: #025ae8;
+}
+
+.input-key{
+	padding: 10px;
 }

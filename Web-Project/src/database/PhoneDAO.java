@@ -23,7 +23,10 @@ public class PhoneDAO {
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 				this.conn = DriverManager.getConnection(url, username, pass);
 				totalPage = this.getTotalPage();
-			}catch(SQLException | ClassNotFoundException e) {
+			}catch(SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 		}		

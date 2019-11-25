@@ -44,7 +44,6 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username") + "";
 		String password = request.getParameter("password") + "";
-		Cookie[] cookies = request.getCookies();
 		Set<String> listUser = (Set<String>) getServletContext().getAttribute("list_user");
 		if(listUser == null) {
 			listUser = new HashSet<String>();

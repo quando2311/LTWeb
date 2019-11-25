@@ -47,6 +47,17 @@ public class PhoneService {
 		return getPhoneJsonFromArr(list);
 	}
 	
+	@GET
+	@Path("/phone/delete")
+	@Produces("application/json")
+	public String deletePhone(@QueryParam("phone-id") int key) {
+		PhoneDAO dao = PhoneDAO.getInstance();
+		System.out.println("delete phone");
+		int isDone = dao.deletePhone(key);
+		return "{\"status\": \""+isDone+"\"}";
+	}
+	
+	
 	private String getPhoneJsonFromArr(ArrayList<Phone> arr) {
 		String json = "{\"phone\": [";
 		for(Phone phone: arr) {

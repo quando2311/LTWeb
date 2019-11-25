@@ -16,8 +16,10 @@ import model.Phone;
 public class APIUtils {
 	
 	public static final String USER_API = "http://localhost:8080/Web-Project-API/api/user";
+	public static final String CHANGE_PASSWORD_API = "http://localhost:8080/Web-Project-API/api/change-password";
 	public static final String PHONES_API = "http://localhost:8080/Web-Project-API/api/phones";
 	public static final String PHONES_PAGE = "http://localhost:8080/Web-Project-API/api/phone";
+
 	public boolean callAdminLoginAPI(String username, String password) {
 		System.out.println("calling API to check login");
 		boolean isValid = false;
@@ -56,6 +58,46 @@ public class APIUtils {
 		} 
 		
 		return isValid;
+	}
+	
+	public String changePasswordAPI(String username, String password, String newPassword) {
+		System.out.println("calling API to change password");
+		String value = null;
+		JSONUtils jsonUtil = new JSONUtils();
+		try {
+			String path = CHANGE_PASSWORD_API + "?username="+username+
+					"&password="+password+"&new-password="+newPassword;
+			URL url = new URL(path);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("username", username);
+			con.setRequestProperty("password", password);
+			con.setRequestProperty("Content-Type", "text/plain");
+						
+			con.setDoOutput(true);
+			OutputStream out = con.getOutputStream();
+			out.flush();
+			out.close();
+			
+			int codeResponse = con.getResponseCode();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String input;
+			StringBuffer response = new StringBuffer();
+			while((input = reader.readLine()) != null) {
+				response.append(input);
+			}
+			reader.close();
+			value = jsonUtil.checkChangePasswordFromJSON(response.toString());
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return value;
 	}
 	
 	public ArrayList<Phone> callPhoneListAPI(){
@@ -132,4 +174,7 @@ public class APIUtils {
 		}
 		return list;		
 	}
+	
+	
+	
 }

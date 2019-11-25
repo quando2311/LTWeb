@@ -30,6 +30,10 @@ public class AdminHomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("get to home");
+		if(request.getSession().getAttribute("username") == null) {
+			request.getRequestDispatcher("view/admin/unauthorize.html").include(request, response);
+			return;
+		}
 		request.getRequestDispatcher("view/admin/admin-home.jsp").include(request, response);		
 	}
 

@@ -56,4 +56,27 @@ public class AdminDAO {
 		return isValid;
 	}
 	
+	public int changePassword(String username, String password, String newPassword) {
+		int isValid = 0;
+		
+		EncryptUtils encrypt = new EncryptUtils();
+		username = encrypt.encryptSHA256(username);
+		password = encrypt.encryptSHA256(password);
+		newPassword = encrypt.encryptSHA256(newPassword);
+		String sql = "UPDATE AdminTbl SET PASSWORD = ? WHERE USERNAME = ? AND PASSWORD = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, newPassword);
+			ps.setString(2, username);
+			ps.setString(3, password);
+			isValid = ps.executeUpdate();
+			System.out.println(isValid);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isValid;
+	}
+	
 }

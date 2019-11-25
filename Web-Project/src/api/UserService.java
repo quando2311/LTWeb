@@ -27,4 +27,17 @@ public class UserService {
 		return "{\"status\": \"" + isValid +"\"}";
 	}
 	
+	@POST
+	@Path("/change-password")
+	@Consumes("text/plain")
+	@Produces("application/json")
+	public String changePassword(	@QueryParam("username") String username, 
+							@QueryParam("password") String password,
+							@QueryParam("new-password") String newPassword) {
+		AdminDAO dao = AdminDAO.getInstance();
+		int isValid = dao.changePassword(username, password, newPassword);
+		String respString = isValid == 0? "Invalid account": "Change password successfully";
+		return "{\"status\": \"" + respString + "\"}";
+	}
+	
 }

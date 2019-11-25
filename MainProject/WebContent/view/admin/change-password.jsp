@@ -11,7 +11,7 @@
 </style>
 </head>
 <body>
-		<%
+	<%
 		if(request.getSession().getAttribute("username") == null){
 	%>
 		<jsp:include page="unauthorize.html"/>
@@ -23,7 +23,7 @@
 		<jsp:include page="admin-home-navbar.html" />
 		<div class="login-div">
 			<form action="change-password" method="POST" class="form-change-password">
-				<h3>ADMIN LOG IN</h3>
+				<h3>CHANGE PASSWORD</h3>
 				<div class="info-field">
 					<div class="tab">
 						<label>Username</label>  <input type="text" name="username"><br>
@@ -32,14 +32,31 @@
 						<label>Password</label>  <input type="password" name="password"><br>
 					</div>
 					<div class="tab">
-						<label>New password</label>  <input type="password" name="password"><br>
+						<label>New password</label>  <input type="password" name="new-password"><br>
+					</div>
+					<div class="tab">
+						<label>Confirm password</label>  <input type="password" name="confirm-password"><br>
 					</div>
 				</div>									
 				<input type="submit" name="submit" value="Submit">
 				<p>${ message }</p>	
 			</form>
 		</div>
-
+	<% 	
+		boolean isChecked;
+		if(request.getAttribute("checked") == null){
+			isChecked = false;	
+		}
+		else isChecked = true;
+		 
+		if(isChecked == true){
+	%>
+		<script type="text/javascript">
+			alert("${message}");
+		</script>		
+	<%
+		} 
+	%>
 	<%
 		}
 	%>

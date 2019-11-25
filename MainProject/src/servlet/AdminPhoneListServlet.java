@@ -32,6 +32,10 @@ public class AdminPhoneListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("get to admin phone list");
+		if(request.getSession().getAttribute("username") == null) {
+			request.getRequestDispatcher("view/admin/unauthorize.html").include(request, response);
+			return;
+		}
 		APIUtils api = new APIUtils();
 		String page = request.getParameter("pageId");
 		ArrayList<Phone> listPhone = (ArrayList<Phone>) request.getAttribute("list_phone");

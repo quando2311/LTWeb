@@ -172,4 +172,19 @@ public class PhoneDAO {
 		return list;
 	}
 	
+	public int deletePhone(int id) {
+		int isDone = -1;
+		String sql = "DELETE FROM PhoneTbl WHERE phone_id = ?";
+		try {
+			PreparedStatement ps =  conn.prepareStatement(sql);
+			ps.setString(1, id+"");
+			isDone = ps.executeUpdate();
+			System.out.println(isDone);
+		} catch (SQLException e) {
+			// TODO Auto-generatd catch block
+			e.printStackTrace();
+		}
+		return isDone;
+	}
+	
 }

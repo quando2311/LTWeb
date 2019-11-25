@@ -18,6 +18,12 @@ public class JSONUtils {
 		return isValid;
 	}
 	
+	public String checkChangePasswordFromJSON(String jsonStr) {
+		JSONObject jsonObj = new JSONObject(jsonStr);
+		String value = (String) jsonObj.get("status");
+		return value;
+	}
+	
 	public ArrayList<Phone> getListPhoneFromJSON(String jsonStr){
 		ArrayList<Phone> list = new ArrayList<Phone>();
 		

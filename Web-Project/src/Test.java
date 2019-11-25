@@ -17,13 +17,11 @@ public class Test {
 	public static void main(String[] args) throws Exception{
 //		EncryptUtils encrypt = new EncryptUtils();
 //		String s = encrypt.encryptSHA256("admin");
-//		System.out.println(s);
-//		System.out.println(s.length());
 //		AdminDAO dao = AdminDAO.getInstance();
-//		System.out.println(dao.checkLogin("admin", "admin"));
-
-		PhoneDAO dao = PhoneDAO.getInstance();
-		ArrayList<Phone> list = dao.getListPhoneAll();
-		System.out.println(list.toString());
+//		System.out.println(dao.changePassword("admin1", "123"));
+		
+//		PhoneDAO dao = PhoneDAO.getInstance();
+//		ArrayList<Phone> list = dao.getListPhoneAll();
+//		System.out.println(list.toString());
 	}
 }

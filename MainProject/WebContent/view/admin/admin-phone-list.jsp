@@ -40,15 +40,20 @@
 				<tr class="headline">
 					<th>ProductId</th>
 					<th>Phone's name</th>
+					<th></th>
 				</tr>
 				<% 
 					int pageId = (int) request.getAttribute("pageId");
 					ArrayList<Phone> listPhone = (ArrayList<Phone>)request.getAttribute("list_phone");
 					for(int i=8*(pageId-1); i<8*pageId && i<listPhone.size(); i++){ 
 				%>
-					<tr class="item">
+					<tr class="item" productId="<%= listPhone.get(i).getId() %>">
 						<td style="text-align: center;"><%= listPhone.get(i).getId() %></td>
 						<td><a href="#"><%=listPhone.get(i).getName() %></a></td>
+						<td>
+							<a href="#">Edit</a>/
+							<a href="#" class="del-btn" onclick="delBtnClicked(this)">Delete</a>
+						</td>
 					</tr>				
 				<%	} %>
 			</table>
@@ -59,7 +64,17 @@
 			</div>		
 		</div>
 	<%
+	//http://localhost:8080/Web-Project-API/api/phone/delete?phone-id=<%=listPhone.get(i).getId() 
 		}
 	%>
+	<script>
+	
+		function delBtnClicked(e){
+			let id = e.parentNode.parentNode.getAttribute('productId');
+			fetch('http://localhost:8080/Web-Project-API/api/phone/delete?phone-id='+id);
+			location.reload();
+		}
+	
+	</script>
 </body>
 </html>

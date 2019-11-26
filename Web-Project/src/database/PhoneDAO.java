@@ -64,6 +64,31 @@ public class PhoneDAO {
 		}
 	}
 	
+	public int insertPhone(Phone phone) {
+		int isDone = 0;
+		String sql = "INSERT INTO PhoneTbl (phone_name, price, imgURL, brand, screen, OS, CPU, RAM, camera, battery)" 
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		try{
+			System.out.println(conn == null);
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, phone.getName());
+			statement.setString(2, phone.getPrice());
+			statement.setString(3, phone.getImgURL());
+			statement.setString(4, phone.getBrand());
+			statement.setString(5, phone.getScreen());
+			statement.setString(6, phone.getOS());
+			statement.setString(7, phone.getCPU());
+			statement.setString(8, phone.getRAM());
+			statement.setString(9, phone.getCamera());
+			statement.setString(10, phone.getBattery());
+			
+			isDone = statement.executeUpdate();			
+		}catch (SQLException e) {
+			
+		}
+		return isDone;
+	}
+	
 	public ArrayList<Phone> getListPhoneAll(){
 		ArrayList<Phone> list = new ArrayList<Phone>();
 		String sql = "SELECT * FROM PhoneTbl";

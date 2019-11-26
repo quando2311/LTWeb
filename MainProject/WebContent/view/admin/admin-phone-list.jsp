@@ -71,7 +71,10 @@
 	
 		function delBtnClicked(e){
 			let id = e.parentNode.parentNode.getAttribute('productId');
-			fetch('http://localhost:8080/Web-Project-API/api/phone/delete?phone-id='+id);
+			let conf = confirm("You want to delete this item?");
+			if(conf){
+				fetch('http://localhost:8080/Web-Project-API/api/phone/delete?phone-id='+id);	
+			}			
 			location.reload();
 		}
 	

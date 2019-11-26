@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class APIUtils {
 	public static final String CHANGE_PASSWORD_API = "http://localhost:8080/Web-Project-API/api/change-password";
 	public static final String PHONES_API = "http://localhost:8080/Web-Project-API/api/phones";
 	public static final String PHONES_PAGE = "http://localhost:8080/Web-Project-API/api/phone";
-
+	public static final String ADD_PHONE_API = "http://localhost:8080/Web-Project-API/api/add-phone";
 	public boolean callAdminLoginAPI(String username, String password) {
 		System.out.println("calling API to check login");
 		boolean isValid = false;
@@ -173,6 +174,43 @@ public class APIUtils {
 			e.printStackTrace();
 		}
 		return list;		
+	}
+	
+	public void addPhone(Phone phone){
+		ArrayList<Phone> list = new ArrayList<Phone>();
+		String queryString = String.format("?phone-name=%s&price=%s&img=%s&brand=%s&screen=%s"
+								+ "&os=%s&cpu=%s&ram=%s&camera=%s&battery=%s", 
+								phone.getName(), phone.getPrice(), phone.getImgURL(), 
+								phone.getBrand(), phone.getScreen(), phone.getOS(), phone.getCPU(), 
+								phone.getRAM(), phone.getCamera(), phone.getBattery());
+		JSONUtils utils = new JSONUtils();
+		try {
+			URL url = new URL(ADD_PHONE_API+ queryString);
+			System.out.println(ADD_PHONE_API+queryString);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("userId", "abc123");
+			con.setRequestProperty("Content-Type", "text/plain");
+			
+			con.setDoOutput(true);
+			OutputStream out = con.getOutputStream();
+			out.flush();
+			out.close();
+								
+			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String input;
+			StringBuffer response = new StringBuffer();
+			while((input = reader.readLine()) != null) {
+				response.append(input);
+			}
+			reader.close();			
+//			list = utils.getListPhoneFromJSON(response.toString());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 	}
 	
 	

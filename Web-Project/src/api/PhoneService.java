@@ -1,6 +1,7 @@
 package api;
 
 import java.io.InputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.ws.rs.Consumes;
@@ -55,6 +56,28 @@ public class PhoneService {
 		System.out.println("delete phone");
 		int isDone = dao.deletePhone(key);
 		return "{\"status\": \""+isDone+"\"}";
+	}
+	
+	@POST 
+	@Path("/add-phone")
+	@Produces("application/json")
+	public String addPhone(@QueryParam("phone-name") String phoneName, 
+						@QueryParam("price") String price, 
+						@QueryParam("img") String imgURL,
+						@QueryParam("brand") String brand,
+						@QueryParam("screen") String screen,
+						@QueryParam("os") String os,
+						@QueryParam("cpu") String cpu,
+						@QueryParam("ram") String ram,
+						@QueryParam("camera") String camera,
+						@QueryParam("battery") String battery) {
+		Phone phone = new Phone(phoneName, price, imgURL, brand, screen, os, cpu, ram, camera, battery);
+		PhoneDAO dao = PhoneDAO.getInstance();
+		int res = dao.insertPhone(phone);
+		System.out.println(String.format("%s--%s--%s--%s--%s--%s--%s--%s--%s--%s", phoneName, 
+							price, imgURL, brand, screen, os, cpu, ram, camera, battery));
+		
+		return "{\"status\": \""+res+"\"}";
 	}
 	
 	

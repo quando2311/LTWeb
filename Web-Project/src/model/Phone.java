@@ -39,6 +39,86 @@ public class Phone {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getImgURL() {
+		return imgURL;
+	}
+
+	public void setImgURL(String imgURL) {
+		this.imgURL = imgURL;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getScreen() {
+		return screen;
+	}
+
+	public void setScreen(String screen) {
+		this.screen = screen;
+	}
+
+	public String getOS() {
+		return OS;
+	}
+
+	public void setOS(String oS) {
+		OS = oS;
+	}
+
+	public String getCPU() {
+		return CPU;
+	}
+
+	public void setCPU(String cPU) {
+		CPU = cPU;
+	}
+
+	public String getRAM() {
+		return RAM;
+	}
+
+	public void setRAM(String rAM) {
+		RAM = rAM;
+	}
+
+	public String getCamera() {
+		return camera;
+	}
+
+	public void setCamera(String camera) {
+		this.camera = camera;
+	}
+
+	public String getBattery() {
+		return battery;
+	}
+
+	public void setBattery(String battery) {
+		this.battery = battery;
+	}
 
 	@Override
 	public String toString() {
@@ -54,7 +134,7 @@ public class Phone {
 				+ "\"camera\": \"%s\", "
 				+ "\"battery\": \"%s\" "
 				+ "}";
-		return String.format(s, productId, name, price, "localhost:8080/ImageStorage/"+imgURL, brand, screen, OS, CPU, RAM, camera, battery);
+		return String.format(s, productId, name, price, "localhost:8080/MainWebProject/"+imgURL, brand, screen, OS, CPU, RAM, camera, battery);
 	}
 	
 	

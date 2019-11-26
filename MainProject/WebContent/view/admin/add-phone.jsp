@@ -29,7 +29,7 @@
 				<h3>ADD NEW PRODUCT</h3>
 			</div>
 			
-			<form action="http://localhost:8080/Web-Project-API/api/phone/add" method="POST" enctype="multipart/form-data">
+			<form action="add-phone" method="POST" enctype="multipart/form-data">
 				<div class="tab">
 					<label>Phone's name</label>
 					<input type="text" name="phone_name">
@@ -40,7 +40,7 @@
 				</div>					
 				<div class="tab">
 					<label>Brand</label>
-					<input type="text" name="phone_name">
+					<input type="text" name="brand">
 				</div>					
 				<div class="tab">
 					<label>Screen</label>

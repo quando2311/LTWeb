@@ -35,6 +35,10 @@ public class Phone {
 
 	
 	
+	public Phone() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -138,7 +142,7 @@ public class Phone {
 				+ "\"camera\": \"%s\", "
 				+ "\"battery\": \"%s\" "
 				+ "}";
-		return String.format(s, name, price, "localhost:8080/ImageStorage/"+imgURL, brand, screen, OS, CPU, RAM, camera, battery);
+		return String.format(s, name, price, imgURL, brand, screen, OS, CPU, RAM, camera, battery);
 	}
 	
 	

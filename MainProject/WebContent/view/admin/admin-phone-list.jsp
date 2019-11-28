@@ -21,9 +21,15 @@
 	<%	
 		}
 		else{
-			String p1 = request.getAttribute("path") + "&pageId=" + ((int)request.getAttribute("pageId")-1);
-			String p2 = request.getAttribute("path") + "&pageId=" + request.getAttribute("pageId");
-			String p3 = request.getAttribute("path") + "&pageId=" + ((int)request.getAttribute("pageId")+1);
+			int curPage = (int)request.getAttribute("pageId");
+			int totalPage = (int)request.getAttribute("totalPage");
+			int nxtPage=0, prvPage=0;
+			prvPage = curPage<=1? 1: curPage-1;
+			nxtPage = curPage>=totalPage? totalPage: curPage+1;
+			
+			String p1 = "pageId=" + prvPage;
+			String p2 = "pageId=" + curPage;
+			String p3 = "pageId=" + nxtPage;
 	%>
 		
 		<jsp:include page="admin-home-navbar.html" />
@@ -45,13 +51,18 @@
 				<% 
 					int pageId = (int) request.getAttribute("pageId");
 					ArrayList<Phone> listPhone = (ArrayList<Phone>)request.getAttribute("list_phone");
+					
 					for(int i=8*(pageId-1); i<8*pageId && i<listPhone.size(); i++){ 
 				%>
 					<tr class="item" productId="<%= listPhone.get(i).getId() %>">
 						<td style="text-align: center;"><%= listPhone.get(i).getId() %></td>
-						<td><a href="#"><%=listPhone.get(i).getName() %></a></td>
 						<td>
-							<a href="#">Edit</a>/
+							<a href="edit-phone?id=<%= listPhone.get(i).getId() %>">
+								<%=listPhone.get(i).getName() %>
+							</a>
+						</td>
+						<td>
+							<a href="edit-phone?id=<%= listPhone.get(i).getId() %>">Edit</a>/
 							<a href="#" class="del-btn" onclick="delBtnClicked(this)">Delete</a>
 						</td>
 					</tr>				

@@ -43,6 +43,7 @@ public class PhoneService {
 	@Path("/phone")
 	@Produces("application/json")
 	public String findPhoneByName(@QueryParam("phone-name") String key) {
+		System.out.println("Phone-name: "+key);
 		PhoneDAO dao = PhoneDAO.getInstance();
 		ArrayList<Phone> list = dao.findPhoneByName(key);
 		return getPhoneJsonFromArr(list);
@@ -80,6 +81,23 @@ public class PhoneService {
 		return "{\"status\": \""+res+"\"}";
 	}
 	
+	@POST 
+	@Path("/find-phone/id")
+	@Produces("application/json")
+	public String findPhoneById(@QueryParam("id") int id) {
+		PhoneDAO dao = PhoneDAO.getInstance();
+		Phone phone = dao.findPhoneById(id);
+		return phone != null? phone.toString(): "{\"status\": \"Not found.\"}";
+	}
+	
+	@POST 
+	@Path("/find-phone/brand")
+	@Produces("application/json")
+	public String findPhoneByBrand(@QueryParam("brand") String brand) {
+		PhoneDAO dao = PhoneDAO.getInstance();
+		ArrayList<Phone> listPhone = dao.findPhoneByBrand(brand);
+		return getPhoneJsonFromArr(listPhone);
+	}
 	
 	private String getPhoneJsonFromArr(ArrayList<Phone> arr) {
 		String json = "{\"phone\": [";

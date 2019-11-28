@@ -1,4 +1,4 @@
-package servlet;
+package servlet.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,6 +37,7 @@ public class AdminPhoneListServlet extends HttpServlet {
 			return;
 		}
 		APIUtils api = new APIUtils();
+		int totalPage = 0;
 		String page = request.getParameter("pageId");
 		ArrayList<Phone> listPhone = (ArrayList<Phone>) request.getAttribute("list_phone");
 		String search_key = request.getParameter("input-phone-name");
@@ -44,24 +45,8 @@ public class AdminPhoneListServlet extends HttpServlet {
 		int pageId = 0;	
 				
 		
-		//Set path for page navigation
-		
-		String path = "";
+		//Set path for page navigation	
 		String queryString = request.getQueryString();
-		System.out.println("Querys: "+queryString);
-		if(queryString != null){				
-			int index = queryString.indexOf("pageId");
-			System.out.println(index);			
-			if(index > 0){
-				System.out.println("asdf");
-				path = queryString.substring(0, index-1);
-			}
-			else {
-				path = queryString;
-			}
-		}		
-		
-		request.setAttribute("path", path);
 		
 		//Set pagination value
 		if(page == null) {
@@ -70,7 +55,6 @@ public class AdminPhoneListServlet extends HttpServlet {
 		else {
 			pageId = Integer.parseInt(page);
 		}
-		
 		//do Get
 		
 		if(search_key == null && submit == null) {			
@@ -78,15 +62,25 @@ public class AdminPhoneListServlet extends HttpServlet {
 				listPhone = api.callPhoneListAPI();
 				request.setAttribute("list_phone", listPhone);
 			}		
-			System.out.println(listPhone.size());
+			
+			totalPage = listPhone.size()/8;
+			if(listPhone.size()%8 != 0)	totalPage++;
+			
+			if(pageId==0)	pageId=1;
+			if(pageId >= totalPage)	pageId = totalPage;
+			System.out.println("pageId: "+pageId);
+			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("pageId", pageId);
 			request.getRequestDispatcher("/view/admin/admin-phone-list.jsp").include(request, response);
 		}
-		else {
-			System.out.println("k");
+		else {			
 			String key = request.getParameter("input-phone-name");				
-			listPhone = api.findPhoneByName(key);
+			listPhone = api.findPhoneByNameAPI(key);
+			totalPage = listPhone.size()/8;
+			if(listPhone.size()%8 != 0)	totalPage++;
+			
 			request.setAttribute("list_phone", listPhone);
+			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("pageId", pageId);
 			request.getRequestDispatcher("/view/admin/admin-phone-list.jsp").include(request, response);
 		}

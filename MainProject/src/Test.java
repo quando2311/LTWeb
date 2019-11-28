@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import model.Phone;
 import servlet.utils.APIUtils;
@@ -20,8 +21,15 @@ public class Test {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		Phone phone = new Phone("test", "test", "test", "test", "test", 
-				"test", "test", "test", "test", "test");
-		api.addPhone(phone);
+//		Phone phone = new Phone("test", "test", "test", "test", "test", 
+//				"test", "test", "test", "test", "test");
+//		api.addPhone(phone);
+//		ArrayList<Phone> listPhone = api.findPhoneByBrandAPI("Apple");
+//		for(Phone i: listPhone) {
+//			System.out.println(i);
+//		}
+		
+		ArrayList<Phone> p = api.findPhoneByNameAPI("Huawei");
+		System.out.println(p.toString());
 	}
 }

@@ -21,6 +21,8 @@ public class APIUtils {
 	public static final String PHONES_API = "http://localhost:8080/Web-Project-API/api/phones";
 	public static final String PHONES_PAGE = "http://localhost:8080/Web-Project-API/api/phone";
 	public static final String ADD_PHONE_API = "http://localhost:8080/Web-Project-API/api/add-phone";
+	public static final String FIND_BY_BRAND = "http://localhost:8080/Web-Project-API/api/find-phone/brand";
+	public static final String FIND_BY_ID = "http://localhost:8080/Web-Project-API/api/find-phone/id";
 	public boolean callAdminLoginAPI(String username, String password) {
 		System.out.println("calling API to check login");
 		boolean isValid = false;
@@ -143,11 +145,12 @@ public class APIUtils {
 		return list;
 	}
 	
-	public ArrayList<Phone> findPhoneByName(String key){
+	public ArrayList<Phone> findPhoneByNameAPI(String key){
 		ArrayList<Phone> list = new ArrayList<Phone>();
 		JSONUtils utils = new JSONUtils();
 		try {
 			URL url = new URL(PHONES_PAGE+"?phone-name="+key);
+			System.out.println(PHONES_PAGE+"?phone-name="+key);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("userId", "abc123");
@@ -176,8 +179,75 @@ public class APIUtils {
 		return list;		
 	}
 	
-	public void addPhone(Phone phone){
+	public ArrayList<Phone> findPhoneByBrandAPI(String key){
 		ArrayList<Phone> list = new ArrayList<Phone>();
+		JSONUtils utils = new JSONUtils();
+		try {
+			URL url = new URL(FIND_BY_BRAND+"?brand="+key);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("userId", "abc123");
+			con.setRequestProperty("Content-Type", "text/plain");
+			
+			con.setDoOutput(true);
+			OutputStream out = con.getOutputStream();
+			out.flush();
+			out.close();
+			
+			
+			int codeResponse = con.getResponseCode();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String input;
+			StringBuffer response = new StringBuffer();
+			while((input = reader.readLine()) != null) {
+				response.append(input);
+			}
+			reader.close();			
+			list = utils.getListPhoneFromJSON(response.toString());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;		
+	}
+	
+	public Phone findPhoneByIdAPI(String key){
+		Phone phone = null;
+		JSONUtils utils = new JSONUtils();
+		try {
+			URL url = new URL(FIND_BY_ID+"?id="+key);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("userId", "abc123");
+			con.setRequestProperty("Content-Type", "text/plain");
+			
+			con.setDoOutput(true);
+			OutputStream out = con.getOutputStream();
+			out.flush();
+			out.close();
+			
+			
+			int codeResponse = con.getResponseCode();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String input;
+			StringBuffer response = new StringBuffer();
+			while((input = reader.readLine()) != null) {
+				response.append(input);
+			}
+			reader.close();			
+
+			phone = utils.getPhoneFromJSON(response.toString());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return phone;		
+	}
+	
+	public String addPhone(Phone phone){
+		String res ="";
 		String queryString = String.format("?phone-name=%s&price=%s&img=%s&brand=%s&screen=%s"
 								+ "&os=%s&cpu=%s&ram=%s&camera=%s&battery=%s", 
 								phone.getName(), phone.getPrice(), phone.getImgURL(), 
@@ -204,13 +274,14 @@ public class APIUtils {
 				response.append(input);
 			}
 			reader.close();			
-//			list = utils.getListPhoneFromJSON(response.toString());
+			res = utils.checkAddPhone(response.toString());
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
+		
+		return res;	
 	}
 	
 	

@@ -72,7 +72,7 @@
 				</div>		
 				<input type="submit" name="submit" value="Add phone" class="btn-add">
 			</form>
-			
+			<p>${ message }</p>	
 		</div>
 	<%
 		}

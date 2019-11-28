@@ -101,12 +101,12 @@ public class PhoneDAO {
 				String price = res.getString(3);
 				String imageURL = res.getString(4);
 				String brand = res.getString(5);
-				String screen = res.getString(5);
-				String os = res.getString(6);
-				String cpu = res.getString(7);
-				String ram = res.getString(8);
-				String camera = res.getString(9);
-				String battery = res.getString(10);
+				String screen = res.getString(6);
+				String os = res.getString(7);
+				String cpu = res.getString(8);
+				String ram = res.getString(9);
+				String camera = res.getString(10);
+				String battery = res.getString(11);
 				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);
 				phone.setProductId(res.getInt(1));
 				list.add(phone);
@@ -134,12 +134,12 @@ public class PhoneDAO {
 				String price = res.getString(3);
 				String imageURL = res.getString(4);
 				String brand = res.getString(5);
-				String screen = res.getString(5);
-				String os = res.getString(6);
-				String cpu = res.getString(7);
-				String ram = res.getString(8);
-				String camera = res.getString(9);
-				String battery = res.getString(10);
+				String screen = res.getString(6);
+				String os = res.getString(7);
+				String cpu = res.getString(8);
+				String ram = res.getString(9);
+				String camera = res.getString(10);
+				String battery = res.getString(11);
 				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);				
 				phone.setProductId(res.getInt(1));
 				list.add(phone);
@@ -180,12 +180,12 @@ public class PhoneDAO {
 				String price = res.getString(3);
 				String imageURL = res.getString(4);
 				String brand = res.getString(5);
-				String screen = res.getString(5);
-				String os = res.getString(6);
-				String cpu = res.getString(7);
-				String ram = res.getString(8);
-				String camera = res.getString(9);
-				String battery = res.getString(10);
+				String screen = res.getString(6);
+				String os = res.getString(7);
+				String cpu = res.getString(8);
+				String ram = res.getString(9);
+				String camera = res.getString(10);
+				String battery = res.getString(11);
 				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);
 				phone.setProductId(res.getInt(1));
 				list.add(phone);
@@ -211,5 +211,63 @@ public class PhoneDAO {
 		}
 		return isDone;
 	}
+	
+	public Phone findPhoneById(int id) {
+		Phone phone = null;
+		String sql = "SELECT * FROM PhoneTbl WHERE phone_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, id+"");
+			ResultSet res = ps.executeQuery();
+			if(res.next()) {
+				String name = res.getString(2);
+				String price = res.getString(3);
+				String imageURL = res.getString(4);
+				String brand = res.getString(5);
+				String screen = res.getString(6);
+				String os = res.getString(7);
+				String cpu = res.getString(8);
+				String ram = res.getString(9);
+				String camera = res.getString(10);
+				String battery = res.getString(11);
+				phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);				
+				phone.setProductId(res.getInt(1));
+			}			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return phone;
+	}
+	
+	public ArrayList<Phone> findPhoneByBrand(String key){
+		ArrayList<Phone> list = new ArrayList<Phone>();
+		String sql = "SELECT * FROM PhoneTbl WHERE brand LIKE ?";		
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, "%"+key+"%");
+			ResultSet res = statement.executeQuery();
+			while(res.next()) {
+				String name = res.getString(2);
+				String price = res.getString(3);
+				String imageURL = res.getString(4);
+				String brand = res.getString(5);
+				String screen = res.getString(6);
+				String os = res.getString(7);
+				String cpu = res.getString(8);
+				String ram = res.getString(9);
+				String camera = res.getString(10);
+				String battery = res.getString(11);
+				Phone phone = new Phone(name, price, imageURL, brand, screen, os, cpu, ram, camera, battery);				
+				phone.setProductId(res.getInt(1));
+				list.add(phone);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+		return list;
+	}
+	
 	
 }

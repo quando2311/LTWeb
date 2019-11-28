@@ -20,8 +20,8 @@ public class Test {
 //		AdminDAO dao = AdminDAO.getInstance();
 //		System.out.println(dao.changePassword("admin1", "123"));
 		
-//		PhoneDAO dao = PhoneDAO.getInstance();
-//		ArrayList<Phone> list = dao.getListPhoneAll();
-//		System.out.println(list.toString());
+		PhoneDAO dao = PhoneDAO.getInstance();
+		ArrayList<Phone> list = dao.findPhoneByName("Apple");
+		System.out.println(list.toString());
 	}
 }

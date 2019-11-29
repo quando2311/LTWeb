@@ -34,8 +34,7 @@ public class JSONUtils {
 		ArrayList<Phone> list = new ArrayList<Phone>();
 		
 		JSONObject jsonObj = new JSONObject(jsonStr);
-		
-		System.out.println(jsonStr);
+	
 		
 		JSONArray arrJSON = (JSONArray) jsonObj.get("phone");
 		for(int i=0; i<arrJSON.length(); i++) {

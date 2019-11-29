@@ -34,6 +34,7 @@
 			</div>
 			
 			<form action="edit-phone" method="POST" enctype="multipart/form-data">
+				<input type="hidden" name="id" value="<%= phone.getId()%>">
 				<div class="tab">
 					<label>Phone's name</label>
 					<input type="text" name="phone_name" value="<%= phone.getName() %>">
@@ -74,13 +75,13 @@
 					<label>Image</label>
 					<input type="file" name="img" id="inputImg">					
 				</div>		
-				<img src="<%= imgURL %>" alt="img-phone" 
-					width="200" height="200" style="margin-left: 200px;" id="phoneImg">
-				<input type="submit" name="submit" value="Edit phone" class="btn-add">
+				<img src="<%= imgURL %>" alt="img-phone" width="200" height="200" style="margin-left: 200px;" id="phoneImg">
+				<input type="submit" name="submit" value="Edit phone" class="btn-add" id="submitBtn" onClick="console.log('a')">
 			</form>
 			<p>${ message }</p>	
 		</div>
 		<script>
+		
 			function setImg(){
 				let URL = window.URL || window.webkitURL;
 				let imgTag = document.getElementById('phoneImg');				

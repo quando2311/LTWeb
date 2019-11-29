@@ -67,12 +67,13 @@ public class AddPhoneServlet extends HttpServlet {
 		System.out.println(file.getContentType());
         String fullSavePath = SAVE_IMG_DIR;
         String imgName = request.getParameter("phone_name")+".jpg";
-       
+       imgName = imgName.replace(" ", "-");
         Phone phone = new Phone(name, price, URLEncoder.encode("Image/PhonesImg/"+imgName, "UTF-8"), 
         					brand, screen, os, cpu, ram, camera, battery);        
         String imgPath = fullSavePath+File.separator+imgName;
         file.write(imgPath);
-        String res = api.addPhone(phone).equals("1") ? "Successfully added": "Fail to add";        
+        String res = api.addPhone(phone).equals("1") ? "Successfully added": "Fail to add"; 
+        System.out.println(request.getQueryString());
         request.setAttribute("message", res);
         request.getRequestDispatcher("/view/admin/add-phone.jsp").include(request, response);
 	}

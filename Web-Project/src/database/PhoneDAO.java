@@ -269,5 +269,33 @@ public class PhoneDAO {
 		return list;
 	}
 	
+	public int updatePhone(Phone phone) {
+		int isDone = 0;
+		String sql = "UPDATE PhoneTbl SET phone_name = ?, price = ?, imgURL= ?, brand= ?, "
+				+ "screen = ?, OS = ?, CPU = ?, RAM = ?, camera = ?, battery = ? WHERE phone_id = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, phone.getName());
+			ps.setString(2, phone.getPrice());
+			ps.setString(3, phone.getImgURL());
+			ps.setString(4, phone.getBrand());
+			ps.setString(5, phone.getScreen());
+			ps.setString(6, phone.getOS());
+			ps.setString(7, phone.getCPU());
+			ps.setString(8, phone.getRAM());
+			ps.setString(9, phone.getCamera());
+			ps.setString(10, phone.getBattery());
+			ps.setString(11, phone.getProductId()+"");
+			isDone = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return isDone;
+	}
 	
 }

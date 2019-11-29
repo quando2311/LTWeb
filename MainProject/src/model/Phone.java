@@ -1,6 +1,7 @@
 package model;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 public class Phone {
 	private int id;
@@ -127,6 +128,22 @@ public class Phone {
 
 	public void setBattery(String battery) {
 		this.battery = battery;
+	}
+	
+	public String[] getStringArrayField() {
+		String[] arr = new String[10];
+		arr[0] = this.name;
+		arr[1] = this.price;
+		arr[2] = this.imgURL;
+		arr[3] = this.brand;
+		arr[4] = this.screen;
+		arr[5] = this.OS;
+		arr[6] = this.CPU;
+		arr[7] = this.RAM;
+		arr[8] = this.camera;
+		arr[9] = this.battery;
+		System.out.println(Arrays.deepToString(arr));
+		return arr;
 	}
 
 	@Override

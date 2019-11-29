@@ -99,6 +99,31 @@ public class PhoneService {
 		return getPhoneJsonFromArr(listPhone);
 	}
 	
+	@POST 
+	@Path("/edit-phone")
+	@Produces("application/json")
+	public String editPhone(@QueryParam("id") String id,
+							@QueryParam("phone-name") String phoneName, 
+							@QueryParam("price") String price, 
+							@QueryParam("img") String imgURL,
+							@QueryParam("brand") String brand,
+							@QueryParam("screen") String screen,
+							@QueryParam("os") String os,
+							@QueryParam("cpu") String cpu,
+							@QueryParam("ram") String ram,
+							@QueryParam("camera") String camera,
+							@QueryParam("battery") String battery) {
+		
+		imgURL = imgURL.substring(imgURL.indexOf("Image"));
+		
+		Phone phone = new Phone(phoneName, price, imgURL, brand, screen, os, cpu, ram, camera, battery);
+		phone.setProductId(Integer.parseInt(id));
+		phone.setImgURL(imgURL);
+		PhoneDAO dao = PhoneDAO.getInstance();
+		int res = dao.updatePhone(phone);
+		return "{\"status\": \"" + 1 + "\"}";
+	}
+	
 	private String getPhoneJsonFromArr(ArrayList<Phone> arr) {
 		String json = "{\"phone\": [";
 		for(Phone phone: arr) {
@@ -107,4 +132,5 @@ public class PhoneService {
 		json = json.substring(0, json.length()-1) + "]}";
 		return json;		
 	}
+	
 }
